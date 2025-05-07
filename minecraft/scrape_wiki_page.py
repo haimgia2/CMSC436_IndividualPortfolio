@@ -188,5 +188,7 @@ if __name__ == "__main__":
 
     print(items_df)
 
+    exit()
+
     with pd.ExcelWriter('minecraft_recipes.xlsx', engine='openpyxl') as writer:
         items_df.to_excel(writer, sheet_name='minecraft crafting recipes', index=False)

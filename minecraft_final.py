@@ -29,7 +29,15 @@ def process_network():
         name = row["Name"]
         name_key = "".join(name.split())
 
-        node = {"data": {"id": name_key, "label": name, "description": row["Description"].strip(), "recipe": row["Image"].strip()}}
+        node = {
+            "data": {
+                "id": name_key,
+                "label": name,
+                "description": row["Description"].strip(),
+                "recipe": row["Image"].strip(),
+                "category": row["Category"]  # ✅ add this line
+            }
+        }
         nodes.append(node)
         existing_nodes.append(name_key)
 
@@ -50,7 +58,13 @@ def process_network():
         for ingredient in ingredients:
             ingredient_key = "".join(ingredient.split())
             if ingredient_key not in existing_nodes:
-                node = {"data": {"id": ingredient_key, "label": ingredient}}
+                node = {
+                    "data": {
+                        "id": ingredient_key,
+                        "label": ingredient,
+                        "category": "Ingredient"  # ✅ or a proper category if known
+                    }
+                }
                 nodes.append(node)
                 existing_nodes.append(ingredient_key)
 
@@ -84,10 +98,75 @@ def process_network():
         
     return elements
 
+def category_color_map(color_map):
+    selectors = []
+
+    for category in color_map:
+        selector = {
+            "selector": f'[category = "{category}"]',
+            "style": {
+                "background-color": f"{color_map[category]}"
+            }
+        }
+        selectors.append(selector)
+
+    return selectors
+
 def create_app():
     elements = process_network()
     global cached_elements
     cached_elements = elements  # ✅ store for reset
+
+    # defines mapping of colors
+    CATEGORY_COLORS = {
+        "Basic Recipes": "#FFB347",      # Orange
+        "Block Recipes": "#87CEEB",      # Sky Blue
+        "Tool Recipes": "#A569BD",       # Purple
+        "Defence Recipes": "#FF6F61",    # Coral Red
+        "Mechanism Recipes": "#5DADE2",  # Light Blue
+        "Food Recipes": "#F4D03F",       # Yellow
+        "Other Recipes": "#95A5A6",      # Gray
+        "Dye Recipes": "#E67E22",        # Burnt Orange
+        "Wool Recipes": "#EC7063",       # Light Red
+        "Brewing Recipes": "#58D68D",    # Light Green
+        "Ingredient": "#B0B0B0"
+    }
+
+    category_styles = category_color_map(CATEGORY_COLORS)
+    # print(category_styles)
+    # exit()
+
+    basic_styles = [
+        {
+            'selector': 'node',
+            'style': {
+                #'background-color': 'mapData(category, "Basic Recipes", "#FFB347", "Block Recipes", "#87CEEB", "Tool Recipes", "#A569BD", "Defence Recipes", "#FF6F61", "Mechanism Recipes", "#5DADE2", "Food Recipes", "#F4D03F", "Other Recipes", "#95A5A6", "Dye Recipes", "#E67E22", "Wool Recipes", "#EC7063", "Brewing Recipes", "#58D68D", "Ingredient", "#B0B0B0")',
+                'label': 'data(label)',
+                'width': 80,
+                'height': 80,
+                'font-size': 16,
+                'text-valign': 'center',
+                'text-halign': 'center',
+                'color': 'black',
+                'text-wrap': 'wrap',
+                'text-max-width': 80,
+            }
+        },
+        {
+            'selector': 'edge',
+            'style': {
+                'line-color': '#7FDBFF',
+                'target-arrow-color': '#7FDBFF',
+                'target-arrow-shape': 'triangle',
+                'curve-style': 'bezier',
+                'width': 2,
+            }
+        }
+    ]
+
+    # makes the stylesheet
+    stylesheet = basic_styles + category_styles
+    
 
     app = dash.Dash(__name__)
 
@@ -114,33 +193,7 @@ def create_app():
             maxZoom=2.0,
             userZoomingEnabled=True,
             userPanningEnabled=True,
-            stylesheet=[
-                {
-                    'selector': 'node',
-                    'style': {
-                        'background-color': '#0074D9',
-                        'label': 'data(label)',
-                        'width': 80,
-                        'height': 80,
-                        'font-size': 16,
-                        'text-valign': 'center',
-                        'text-halign': 'center',
-                        'color': 'black',
-                        'text-wrap': 'wrap',
-                        'text-max-width': 80,
-                    }
-                },
-                {
-                    'selector': 'edge',
-                    'style': {
-                        'line-color': '#7FDBFF',
-                        'target-arrow-color': '#7FDBFF',
-                        'target-arrow-shape': 'triangle',
-                        'curve-style': 'bezier',
-                        'width': 2,
-                    }
-                }
-            ]
+            stylesheet=stylesheet
         ),
 
         # Side panel
