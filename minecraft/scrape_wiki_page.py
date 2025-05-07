@@ -136,8 +136,19 @@ def scrape_crafting_recipes():
 
     tables = soup.find_all('table')
 
+    # Extract all <h2> tags
+    h2_tags = soup.find_all('h2')
+
+    # Optional: get just the text content
+    categories = [tag.get_text(strip=True) for tag in h2_tags]
+
     dfs = dfs[1:]
     tables = tables[1:]
+
+    print(categories)
+
+    print(f"number of categories: {len(categories)}")
+    print(f"number of tables: {len(dfs)}")
 
     for i, df in enumerate(dfs):
         # removes the first row of the dataframe
@@ -158,12 +169,11 @@ def scrape_crafting_recipes():
             image = tag['src']
             images.append(f"{url}{image}")
 
-        # print(f"DF LENGTH {len(df)}")
-        # print(f"IMAGE LENGTH {len(images)}")
-
-        #df["Image"] = images
-
         df["Image"] = images[:len(df)]  # Prevent image overflow
+
+        # adds the category column
+        df["Category"] = categories[i] if i < len(categories) else "Unknown"
+
         dfs[i] = df
 
         #print(df.head())
@@ -173,20 +183,10 @@ def scrape_crafting_recipes():
     return minecraft_df
 
 if __name__ == "__main__":
-    
-    # items = scrape_page2()
-
-    # for item in items:
-    #     print(item)
-
-    # items_df = pd.DataFrame(items)
-
-    # print(items_df)
-
-    # with pd.ExcelWriter('minecraft_ingredients.xlsx', engine='openpyxl') as writer:
-    #     items_df.to_excel(writer, sheet_name='minecraft tools', index=False)
 
     items_df = scrape_crafting_recipes()
+
+    print(items_df)
 
     with pd.ExcelWriter('minecraft_recipes.xlsx', engine='openpyxl') as writer:
         items_df.to_excel(writer, sheet_name='minecraft crafting recipes', index=False)
