@@ -9,4 +9,24 @@ Initially, I planned to scrape data from the official Minecraft wiki, but I foun
 
 In the IoT Knowledge Graph project, we used ArangoDB to host the graph. Wanting to make my Minecraft network easy to host locally and customizable with interactive features like a sidebar, I built the visualization using Cytoscape and Dash. Cytoscape is known for its ability to render large graphs and its interactive capabilities. The network was hosted locally using Dash, and while learning Cytoscape was a challenge at first, I eventually got the hang of it. I also encountered performance issues due to the number of nodes, so I implemented caching of the original network to reduce load times after the initial render.
 
-Throughout the process, I learned that different graph tools are suited for different use cases. Dash and Cytoscape are great for building clean, interactive networks, while heavier graph databases like ArangoDB or Neo4j are more appropriate for rendering networks with thousands of nodes and edges. I also attempted to cluster nodes by item type, but doing so caused overlapping among nodes and edges, which made the network harder to interpret. I'm still wondering if there’s an effective way to cluster nodes by item type without causing overlaps—and if so, whether it would make the Minecraft network easier to understand.
+Throughout the process, I learned that different graph tools are suited for different use cases. Dash and Cytoscape are great for building clean, interactive networks, while heavier graph databases like ArangoDB or Neo4j are more appropriate for rendering networks with thousands of nodes and edges. I also attempted to cluster nodes by item type, but doing so caused overlapping among nodes and edges, which made the network harder to interpret. I'm still wondering if there’s an effective way to cluster nodes by item type without causing overlaps, and if so, whether it would make the Minecraft network easier to understand.
+
+# Item 4: Sports Facilities Chloropleth Map across New York City
+
+Sources:
+
+https://data.cityofnewyork.us/d/qnem-b8re
+
+https://docs.google.com/spreadsheets/d/1iIhwuLBlIus2n1EQ2a329jX4oJciXt9dEaxOFPpHfE8/edit?usp=sharing
+
+https://www.nycgovparks.org/permits/
+
+One of my project pitches was to build an interactive map of sports facilities. Initially, the idea started as a way to locate nearby tennis courts, since tennis is one of the main sports I play, but I decided to broaden the scope to general sports facilities to attract a wider audience of athletes. It also helped that general sports facility data was relatively easy to access through Data World. I used the open-source Athletic Facilities dataset provided by NYC’s Department of Parks and Recreation (DPR), which includes multipolygons of sports facilities, their zip codes, dimensions, surface types, and the primary sport played at each location. The dataset also came with a data dictionary, which made it easy to interpret and work with. It was detailed and comprehensive enough to support a meaningful data visualization.
+
+While building this project, I realized that creating choropleth maps can be quite challenging. Mapping the sports facilities required the use of multipolygons, so I had to learn how to visualize these using GeoPandas. I also ran into rendering issues. Even though the dataset only covers facilities in NYC, it includes about 6,000 entries, which made rendering slow and difficult to test. I began by working with a smaller subset of the data before gradually expanding to the full dataset. To improve performance, I implemented caching for the rendered maps, especially when applying different filters, so the map wouldn’t have to be fully redrawn each time.
+
+The choropleth map was built using PyDeck and Dash, which allowed me to add interactive features like filtering by sport, zip code, and surface type, and ideally clicking on a facility to show more details in a sidebar. However, due to the complexity of the implementation and time constraints, I was only able to support filtering by primary sport, along with zoom and hover features.
+
+If I work with large-scale maps or geovisualizations again, such as those used in graph databases, I now understand the importance of caching to improve rendering speed and usability.
+
+This was my first time working with geovisualizations, so I'm still getting used to the process. If I get the chance to improve this project, I’d like to implement the interactive features I wasn’t able to complete, such as displaying additional facility details on click. I also want to include more attributes beyond just the primary sport and unique ID, and further optimize the rendering performance, as the map still takes time to load.
