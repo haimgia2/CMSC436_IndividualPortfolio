@@ -31,6 +31,10 @@ On a side note, as someone in STEM, I’m not very familiar with the career traj
 
 
 # Item 3: Minecraft Interactive Network
+Source:
+
+https://www.minecraftcrafting.info/
+
 As someone who used to play Minecraft all the time—and still hops back in from time to time—I’ve always been fascinated by the crafting mechanic, which I believe is what made Minecraft such a unique game. However, I often found it a hassle to search online for crafting recipes for specific items or to figure out what certain raw materials were used for.
 
 Outside of class, I’m working on a sustained research project at the UMBC Data Management & Semantics (DAMS) Research Group called the IoT Knowledge Graph Project, where I work extensively with networks and graph databases. Since I already had experience with network visualization, I came up with the idea to display the relationships between Minecraft items as an interactive graph. This would allow all crafting recipes to be stored in a centralized, user-friendly database, avoiding the overwhelm of scrolling through chunks of text. In this network, nodes represent Minecraft items, and directed edges indicate that one item is used as an ingredient in crafting another. Clicking on an item also opens a sidebar that shows its crafting recipe.
