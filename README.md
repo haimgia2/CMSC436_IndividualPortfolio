@@ -13,6 +13,23 @@ Looking ahead, rather than relying solely on traditional bar or line charts to r
 
 On a side note, this visualization also made me reflect on how unevenly distributed incomes are across different job markets—and how, even within the same market, individuals can lie at vastly different points on the income spectrum.
 
+# Item 2: Visualizing the School of Design in the Polytechnic University of Milan
+Source:
+
+https://densitydesign.org/2013/04/visualizing-the-school-of-design/
+
+This curation was the one I selected for the Best Vis Bake-Off. It was created by DensityDesign, a design research lab at the Polytechnic University of Milan in Italy. The purpose of the visualization was to depict the career and higher education paths taken by students from the university’s School of Design. I really appreciated how the designers were able to condense a large amount of complex information into a single, visually appealing, and easy-to-understand artifact.
+
+One key takeaway from this visualization is that you don’t necessarily need animation or interactivity to make a visualization impactful. The designers used a thoughtful combination of visual idioms—including Sankey diagrams to show the distribution of students across various paths, donut charts and stacked bar charts to represent ratios of students (e.g., college level, credits, areas of study), and histograms to display the frequency of graduating scores. I also appreciated their effective use of visual channels, especially horizontal and vertical position. As you follow the Sankey graph from left to right, it illustrates the progression of students through higher levels of education (Bachelor’s, Master’s, and PhD). The vertical position seems to indicate students who choose to enter the workforce at different levels of education. The Sankey diagram resembled a large, flowing filter, which made the data engaging to analyze.
+
+Their color scheme was another strength—distinct yet subtle, visually pleasing without being distracting. It was clear that the creators put careful thought into their choice of idioms, visual channels, and color palette, all while opting out of animation and interactivity. While interactivity and animation can certainly enhance a visualization, I found this static visualization just as compelling—it invited viewers to explore and interpret the data at their own pace.
+
+Outside of class, I’d like to experiment with new idioms like Sankey diagrams and donut charts. I’m still most familiar with traditional bar and line charts, so I want to continue exploring how other idioms can be even more effective, especially when combined. Inspired by this visualization, I’m interested in trying to integrate multiple idioms in a single view to see how they can complement one another and reveal deeper insights than they could individually.
+
+On a side note, as someone in STEM, I’m not very familiar with the career trajectories of design-focused majors. Thanks to this visualization, I gained a better understanding of how many design students pursue advanced degrees and the specific areas within the field they choose to enter.
+
+
+
 # Item 3: Minecraft Interactive Network
 As someone who used to play Minecraft all the time—and still hops back in from time to time—I’ve always been fascinated by the crafting mechanic, which I believe is what made Minecraft such a unique game. However, I often found it a hassle to search online for crafting recipes for specific items or to figure out what certain raw materials were used for.
 
