@@ -1,7 +1,7 @@
 # CMSC436_IndividualPortfolio
 
 # Item 1: Shifting Incomes for American Jobs - Chapter 5 Activity
-Source:
+## Source
 
 https://flowingdata.com/2016/06/28/distributions-of-annual-income/
 
@@ -13,8 +13,8 @@ Looking ahead, rather than relying solely on traditional bar or line charts to r
 
 On a side note, this visualization also made me reflect on how unevenly distributed incomes are across different job markets—and how, even within the same market, individuals can lie at vastly different points on the income spectrum.
 
-# Item 2: Visualizing the School of Design in the Polytechnic University of Milan
-Source:
+# Item 2: Visualizing the School of Design in the Polytechnic University of Milan - Best/Worst Vis Bake-Off
+## Source
 
 https://densitydesign.org/2013/04/visualizing-the-school-of-design/
 
@@ -31,9 +31,25 @@ On a side note, as someone in STEM, I’m not very familiar with the career traj
 
 
 # Item 3: Minecraft Interactive Network
-Source:
+## Source
 
 https://www.minecraftcrafting.info/
+
+## Directions
+1. make a new python environment
+   ```
+   pip install virtualenv
+   python -m venv minecraft_env
+   ```
+2. activate your python environment
+3. install the required dependencies in the requirements.txt
+   ```
+   pip install -r minecraft/requirements.txt 
+   ```
+4. run the code
+   ```
+   python minecraft_final.py
+   ```
 
 As someone who used to play Minecraft all the time—and still hops back in from time to time—I’ve always been fascinated by the crafting mechanic, which I believe is what made Minecraft such a unique game. However, I often found it a hassle to search online for crafting recipes for specific items or to figure out what certain raw materials were used for.
 
@@ -46,14 +62,29 @@ In the IoT Knowledge Graph project, we used ArangoDB to host the graph. Wanting 
 Throughout the process, I learned that different graph tools are suited for different use cases. Dash and Cytoscape are great for building clean, interactive networks, while heavier graph databases like ArangoDB or Neo4j are more appropriate for rendering networks with thousands of nodes and edges. I also attempted to cluster nodes by item type, but doing so caused overlapping among nodes and edges, which made the network harder to interpret. I'm still wondering if there’s an effective way to cluster nodes by item type without causing overlaps, and if so, whether it would make the Minecraft network easier to understand.
 
 # Item 4: Sports Facilities Chloropleth Map across New York City
-
-Sources:
+## Sources
 
 https://data.cityofnewyork.us/d/qnem-b8re
 
 https://docs.google.com/spreadsheets/d/1iIhwuLBlIus2n1EQ2a329jX4oJciXt9dEaxOFPpHfE8/edit?usp=sharing
 
 https://www.nycgovparks.org/permits/
+
+## Directions
+1. make a new python environment
+   ```
+   pip install virtualenv
+   python -m venv sports_env
+   ```
+2. activate your python environment
+3. install the required dependencies in the requirements.txt
+   ```
+   pip install -r sports_facilities/requirements.txt 
+   ``` 
+4. run the code
+   ```
+   python sports_app.py
+   ```
 
 One of my project pitches was to build an interactive map of sports facilities. Initially, the idea started as a way to locate nearby tennis courts, since tennis is one of the main sports I play, but I decided to broaden the scope to general sports facilities to attract a wider audience of athletes. It also helped that general sports facility data was relatively easy to access through Data World. I used the open-source Athletic Facilities dataset provided by NYC’s Department of Parks and Recreation (DPR), which includes multipolygons of sports facilities, their zip codes, dimensions, surface types, and the primary sport played at each location. The dataset also came with a data dictionary, which made it easy to interpret and work with. It was detailed and comprehensive enough to support a meaningful data visualization.
 
